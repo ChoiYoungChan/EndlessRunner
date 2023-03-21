@@ -1,2 +1,0 @@
-D:\Documents\Project\Project Athena\EndlessRunner\Intermediate\Build\Win64\UE4Editor\Development\EndlessRunner\Definitions.EndlessRunner.h
-D:\Documents\Project\Project Athena\EndlessRunner\Source\EndlessRunner\EndlessRunner.h
