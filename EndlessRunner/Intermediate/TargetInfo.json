@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "EndlessRunner",
+			"Path": "D:\\Documents\\Project\\Project Athena\\EndlessRunner\\Source\\EndlessRunner.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "EndlessRunnerEditor",
+			"Path": "D:\\Documents\\Project\\Project Athena\\EndlessRunner\\Source\\EndlessRunnerEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
