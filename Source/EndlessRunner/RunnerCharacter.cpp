@@ -27,7 +27,20 @@ ARunnerCharacter::ARunnerCharacter()
 	// make block rotation of side cam
 	m_sideViewCamera->bUsePawnControlRotation = false;
 
+	GetCharacterMovement()->bOrientRotationToMovement = true;
+	GetCharacterMovement()->RotationRate = FRotator(0.0f, 720.0f, 0.0f);
+	// set gravity scale
+	GetCharacterMovement()->GravityScale = 2.0f;
+	// set the flight time
+	GetCharacterMovement()->AirControl = 0.8f;
+	// set how far and hight can jump
+	GetCharacterMovement()->JumpZVelocity = 1000.0f;
+	GetCharacterMovement()->GroundFriction = 3.0f;
+	GetCharacterMovement()->MaxWalkSpeed = 600.0f;
+	GetCharacterMovement()->MaxFlySpeed = 600.0f;
 
+	m_tempPos = GetActorLocation();
+	m_zPosition = m_tempPos.Z + 300.0f;
 
 }
 
@@ -35,24 +48,38 @@ ARunnerCharacter::ARunnerCharacter()
 void ARunnerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	m_b_canMove = true;
 }
 
 void ARunnerCharacter::MoveRight(float _move_value)
 {
+	if (m_b_canMove)
+	{
+		AddMovementInput(FVector(0.0f, 1.0f, 0.0f), _move_value);
+	}
 }
 
 // Called every frame
 void ARunnerCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	m_tempPos = GetActorLocation();
+	m_tempPos.X -= 850.0f;
+	m_tempPos.Z = m_zPosition;
+	m_sideViewCamera->SetWorldLocation(m_tempPos);
 }
 
 // Called to bind functionality to input
 void ARunnerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
+
+	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
+	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
+
+	PlayerInputComponent->BindAxis("MoveRight", this, &ARunnerCharacter::MoveRight);
+
+
 
 }
 
