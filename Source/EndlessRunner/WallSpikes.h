@@ -13,5 +13,14 @@ UCLASS()
 class ENDLESSRUNNER_API AWallSpikes : public ASpikes
 {
 	GENERATED_BODY()
+
+public:
+	AWallSpikes();
+
+protected:
+	virtual void BeginPlay() override;
+
+public:
+	virtual void Tick(float DeltaTime) override;
 	
 };

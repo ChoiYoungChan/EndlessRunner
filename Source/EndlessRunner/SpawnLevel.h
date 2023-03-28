@@ -33,7 +33,7 @@ public:
 		int32 _otherBodyIndex, bool _bFrom_sweep, const FHitResult& _sweep_result);
 
 protected:
-	APawn* m_player;
+	APawn* mplayer;
 
 	UPROPERTY(EditAnywhere) TSubclassOf<ABaseLevel>  m_level01;
 	UPROPERTY(EditAnywhere) TSubclassOf<ABaseLevel>  m_level02;
@@ -46,12 +46,12 @@ protected:
 	UPROPERTY(EditAnywhere) TSubclassOf<ABaseLevel>  m_level09;
 	UPROPERTY(EditAnywhere) TSubclassOf<ABaseLevel>  m_level10;
 
-	TArray<ABaseLevel*> m_levelList;
+	TArray<ABaseLevel*> mlevelList;
 
 public:
-	int m_randomLevel;
-	FVector m_spawnLocation = FVector();
-	FRotator m_spawnRotation = FRotator();
-	FActorSpawnParameters m_spawnInfo = FActorSpawnParameters();
+	int mrandomLevel;
+	FVector mspawnLocation = FVector();
+	FRotator mspawnRotation = FRotator();
+	FActorSpawnParameters mspawnInfo = FActorSpawnParameters();
 
 };

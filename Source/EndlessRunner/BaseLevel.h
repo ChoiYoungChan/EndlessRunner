@@ -29,10 +29,10 @@ public:
 
 protected:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Triggers")
-		UBoxComponent* m_trigger;
+		UBoxComponent* mtrigger;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Triggers")
-		UBoxComponent* m_spawnLocation;
+		UBoxComponent* mspawnLocation;
 
 
 };

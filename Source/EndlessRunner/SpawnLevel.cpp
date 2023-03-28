@@ -34,47 +34,47 @@ void ASpawnLevel::Tick(float DeltaTime)
 
 void ASpawnLevel::SpawnLevel(bool _isFirst)
 {
-	m_spawnLocation = FVector(0.0f, 1000.0f, 0.0f);
-	m_spawnRotation = FRotator(0.0f, 90.0f, 0.0f);
+	mspawnLocation = FVector(0.0f, 1000.0f, 0.0f);
+	mspawnRotation = FRotator(0.0f, 90.0f, 0.0f);
 
 	if (!_isFirst)
 	{
-		ABaseLevel* lastLevel = m_levelList.Last();
-		m_spawnLocation = lastLevel->GetSpawnLocation()->GetComponentTransform().GetTranslation();
+		ABaseLevel* lastLevel = mlevelList.Last();
+		mspawnLocation = lastLevel->GetSpawnLocation()->GetComponentTransform().GetTranslation();
 	}
-	m_randomLevel = FMath::RandRange(1,10);
+	mrandomLevel = FMath::RandRange(1,10);
 	ABaseLevel* newLevel = nullptr;
 
-	if (m_randomLevel == 1) {
-		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level01, m_spawnLocation,
-			m_spawnRotation, m_spawnInfo);
-	} else if (m_randomLevel == 2) {
-		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level02, m_spawnLocation,
-			m_spawnRotation, m_spawnInfo);
-	} else if (m_randomLevel == 3) {
-		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level03, m_spawnLocation,
-			m_spawnRotation, m_spawnInfo);
-	} else if (m_randomLevel == 4) {
-		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level04, m_spawnLocation,
-			m_spawnRotation, m_spawnInfo);
-	} else if (m_randomLevel == 5) {
-		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level05, m_spawnLocation,
-			m_spawnRotation, m_spawnInfo);
-	} else if (m_randomLevel == 6) {
-		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level06, m_spawnLocation,
-			m_spawnRotation, m_spawnInfo);
-	} else if (m_randomLevel == 7) {
-		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level07, m_spawnLocation,
-			m_spawnRotation, m_spawnInfo);
-	} else if (m_randomLevel == 8) {
-		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level08, m_spawnLocation,
-			m_spawnRotation, m_spawnInfo);
-	} else if (m_randomLevel == 9) {
-		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level09, m_spawnLocation,
-			m_spawnRotation, m_spawnInfo);
-	} else if (m_randomLevel == 10) {
-		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level10, m_spawnLocation,
-			m_spawnRotation, m_spawnInfo);
+	if (mrandomLevel == 1) {
+		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level01, mspawnLocation,
+			mspawnRotation, mspawnInfo);
+	} else if (mrandomLevel == 2) {
+		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level02, mspawnLocation,
+			mspawnRotation, mspawnInfo);
+	} else if (mrandomLevel == 3) {
+		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level03, mspawnLocation,
+			mspawnRotation, mspawnInfo);
+	} else if (mrandomLevel == 4) {
+		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level04, mspawnLocation,
+			mspawnRotation, mspawnInfo);
+	} else if (mrandomLevel == 5) {
+		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level05, mspawnLocation,
+			mspawnRotation, mspawnInfo);
+	} else if (mrandomLevel == 6) {
+		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level06, mspawnLocation,
+			mspawnRotation, mspawnInfo);
+	} else if (mrandomLevel == 7) {
+		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level07, mspawnLocation,
+			mspawnRotation, mspawnInfo);
+	} else if (mrandomLevel == 8) {
+		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level08, mspawnLocation,
+			mspawnRotation, mspawnInfo);
+	} else if (mrandomLevel == 9) {
+		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level09, mspawnLocation,
+			mspawnRotation, mspawnInfo);
+	} else if (mrandomLevel == 10) {
+		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level10, mspawnLocation,
+			mspawnRotation, mspawnInfo);
 	}
 
 	if (newLevel)
@@ -84,10 +84,10 @@ void ASpawnLevel::SpawnLevel(bool _isFirst)
 			newLevel->GetTrigger()->OnComponentBeginOverlap.AddDynamic(this, &ASpawnLevel::OnOverlapBegin);
 		}
 	}
-	m_levelList.Add(newLevel);
-	if (m_levelList.Num() > 5)
+	mlevelList.Add(newLevel);
+	if (mlevelList.Num() > 5)
 	{
-		m_levelList.RemoveAt(0);
+		mlevelList.RemoveAt(0);
 	}
 
 }

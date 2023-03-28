@@ -11,7 +11,7 @@ class ENDLESSRUNNER_API ARunnerCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
-		UPROPERTY(VisibleAnywhere) class UCameraComponent* m_sideViewCamera;
+	UPROPERTY(VisibleAnywhere) class UCameraComponent* msideViewCamera;
 
 public:
 	// Sets default values for this character's properties
@@ -40,12 +40,12 @@ public:
 public:
 	class UCameraComponent* GetSideViewCameraComponent() const
 	{
-		return m_sideViewCamera;
+		return msideViewCamera;
 	}
 
 private:
-	float m_zPosition;
-	FVector m_tempPos = FVector();
-	bool m_b_canMove;
+	float mzPosition;
+	FVector mtempPos = FVector();
+	bool mbcanMove;
 
 };

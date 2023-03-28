@@ -16,7 +16,7 @@ void ABaseLevel::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (m_trigger != nullptr) m_trigger->bHiddenInGame = true;
+	if (mtrigger != nullptr) mtrigger->bHiddenInGame = true;
 	
 }
 
@@ -29,11 +29,11 @@ void ABaseLevel::Tick(float DeltaTime)
 
 UBoxComponent* ABaseLevel::GetTrigger()
 {
-	return m_trigger;
+	return mtrigger;
 }
 
 UBoxComponent* ABaseLevel::GetSpawnLocation()
 {
-	return m_spawnLocation;
+	return mspawnLocation;
 }
 
