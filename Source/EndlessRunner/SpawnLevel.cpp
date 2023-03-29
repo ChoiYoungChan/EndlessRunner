@@ -19,6 +19,8 @@ void ASpawnLevel::BeginPlay()
 {
 	Super::BeginPlay();
 
+	mLevel.Reserve(10);
+
 	SpawnLevel(true);
 	SpawnLevel(false);
 	SpawnLevel(false);
@@ -46,34 +48,7 @@ void ASpawnLevel::SpawnLevel(bool _isFirst)
 	ABaseLevel* newLevel = nullptr;
 
 	if (mrandomLevel == 1) {
-		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level01, mspawnLocation,
-			mspawnRotation, mspawnInfo);
-	} else if (mrandomLevel == 2) {
-		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level02, mspawnLocation,
-			mspawnRotation, mspawnInfo);
-	} else if (mrandomLevel == 3) {
-		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level03, mspawnLocation,
-			mspawnRotation, mspawnInfo);
-	} else if (mrandomLevel == 4) {
-		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level04, mspawnLocation,
-			mspawnRotation, mspawnInfo);
-	} else if (mrandomLevel == 5) {
-		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level05, mspawnLocation,
-			mspawnRotation, mspawnInfo);
-	} else if (mrandomLevel == 6) {
-		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level06, mspawnLocation,
-			mspawnRotation, mspawnInfo);
-	} else if (mrandomLevel == 7) {
-		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level07, mspawnLocation,
-			mspawnRotation, mspawnInfo);
-	} else if (mrandomLevel == 8) {
-		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level08, mspawnLocation,
-			mspawnRotation, mspawnInfo);
-	} else if (mrandomLevel == 9) {
-		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level09, mspawnLocation,
-			mspawnRotation, mspawnInfo);
-	} else if (mrandomLevel == 10) {
-		newLevel = GetWorld()->SpawnActor<ABaseLevel>(m_level10, mspawnLocation,
+		newLevel = GetWorld()->SpawnActor<ABaseLevel>(mLevel[mrandomLevel - 1], mspawnLocation,
 			mspawnRotation, mspawnInfo);
 	}
 

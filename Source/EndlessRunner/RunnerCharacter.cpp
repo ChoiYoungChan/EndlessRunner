@@ -87,9 +87,6 @@ void ARunnerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
 
 	PlayerInputComponent->BindAxis("MoveRight", this, &ARunnerCharacter::MoveRight);
-
-
-
 }
 
 void ARunnerCharacter::ReStartLevel()

@@ -4,6 +4,8 @@
 #include "EndlessRunnerCharacter.h"
 #include "UObject/ConstructorHelpers.h"
 
+#include <Blueprint/UserWidget.h>
+
 AEndlessRunnerGameMode::AEndlessRunnerGameMode()
 {
 	// set default pawn class to our Blueprinted character
@@ -12,4 +14,11 @@ AEndlessRunnerGameMode::AEndlessRunnerGameMode()
 	{
 		DefaultPawnClass = PlayerPawnBPClass.Class;
 	}
+}
+
+void AEndlessRunnerGameMode::BeginPlay()
+{
+	Super::BeginPlay();
+
+
 }

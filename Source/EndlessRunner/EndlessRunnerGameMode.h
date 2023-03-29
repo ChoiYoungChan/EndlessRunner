@@ -13,6 +13,18 @@ class AEndlessRunnerGameMode : public AGameModeBase
 
 public:
 	AEndlessRunnerGameMode();
+
+	UFUNCTION(BlueprintCallable, Category = "HUD")
+	void ChangeMenuWidget(TSubclassOf<UUserWidget> NewWidgetClass);
+
+protected:
+	virtual void BeginPlay() override;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HUD")
+		TSubclassOf<UUserWidget> startingWidgetClass;
+
+	UPROPERTY()
+		UUserWidget* currentWidget;
 };
 
 

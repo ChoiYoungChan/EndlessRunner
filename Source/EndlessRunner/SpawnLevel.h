@@ -34,17 +34,7 @@ public:
 
 protected:
 	APawn* mplayer;
-
-	UPROPERTY(EditAnywhere) TSubclassOf<ABaseLevel>  m_level01;
-	UPROPERTY(EditAnywhere) TSubclassOf<ABaseLevel>  m_level02;
-	UPROPERTY(EditAnywhere) TSubclassOf<ABaseLevel>  m_level03;
-	UPROPERTY(EditAnywhere) TSubclassOf<ABaseLevel>  m_level04;
-	UPROPERTY(EditAnywhere) TSubclassOf<ABaseLevel>  m_level05;
-	UPROPERTY(EditAnywhere) TSubclassOf<ABaseLevel>  m_level06;
-	UPROPERTY(EditAnywhere) TSubclassOf<ABaseLevel>  m_level07;
-	UPROPERTY(EditAnywhere) TSubclassOf<ABaseLevel>  m_level08;
-	UPROPERTY(EditAnywhere) TSubclassOf<ABaseLevel>  m_level09;
-	UPROPERTY(EditAnywhere) TSubclassOf<ABaseLevel>  m_level10;
+	UPROPERTY(EditAnywhere) TArray<TSubclassOf<ABaseLevel>> mLevel;
 
 	TArray<ABaseLevel*> mlevelList;
 
