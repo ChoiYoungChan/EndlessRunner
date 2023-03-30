@@ -35,7 +35,6 @@ public:
 protected:
 	APawn* mplayer;
 	UPROPERTY(EditAnywhere) TArray<TSubclassOf<ABaseLevel>> mLevel;
-
 	TArray<ABaseLevel*> mlevelList;
 
 public:

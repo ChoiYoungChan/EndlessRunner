@@ -21,6 +21,7 @@ void ASpawnLevel::BeginPlay()
 
 	mLevel.Reserve(10);
 
+	// spawn initialize level
 	SpawnLevel(true);
 	SpawnLevel(false);
 	SpawnLevel(false);
@@ -47,10 +48,7 @@ void ASpawnLevel::SpawnLevel(bool _isFirst)
 	mrandomLevel = FMath::RandRange(1,10);
 	ABaseLevel* newLevel = nullptr;
 
-	if (mrandomLevel == 1) {
-		newLevel = GetWorld()->SpawnActor<ABaseLevel>(mLevel[mrandomLevel - 1], mspawnLocation,
-			mspawnRotation, mspawnInfo);
-	}
+	newLevel = GetWorld()->SpawnActor<ABaseLevel>(mLevel[mrandomLevel - 1], mspawnLocation, mspawnRotation, mspawnInfo);
 
 	if (newLevel)
 	{
@@ -59,6 +57,7 @@ void ASpawnLevel::SpawnLevel(bool _isFirst)
 			newLevel->GetTrigger()->OnComponentBeginOverlap.AddDynamic(this, &ASpawnLevel::OnOverlapBegin);
 		}
 	}
+
 	mlevelList.Add(newLevel);
 	if (mlevelList.Num() > 5)
 	{

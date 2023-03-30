@@ -89,6 +89,7 @@ void ARunnerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	PlayerInputComponent->BindAxis("MoveRight", this, &ARunnerCharacter::MoveRight);
 }
 
+// activate this func after press retry button in Result widget
 void ARunnerCharacter::ReStartLevel()
 {
 	UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()));
