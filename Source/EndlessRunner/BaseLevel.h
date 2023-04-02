@@ -33,6 +33,4 @@ protected:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Triggers")
 		UBoxComponent* mspawnLocation;
-
-
 };

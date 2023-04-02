@@ -32,6 +32,9 @@ public:
 
 	void ReStartLevel();
 
+	void MoveResultMap();
+
+
 	UFUNCTION() void OnOverlapBegin(UPrimitiveComponent* _overlappedComponent,
 		AActor* _other_actor,
 		UPrimitiveComponent* _other_component,
@@ -47,5 +50,4 @@ private:
 	float mzPosition;
 	FVector mtempPos = FVector();
 	bool mbcanMove;
-
 };

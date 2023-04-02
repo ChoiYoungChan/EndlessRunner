@@ -62,8 +62,7 @@ void ARunnerCharacter::BeginPlay()
 
 void ARunnerCharacter::MoveRight(float _move_value)
 {
-	if (mbcanMove)
-	{
+	if (mbcanMove) {
 		AddMovementInput(FVector(0.0f, 1.0f, 0.0f), _move_value);
 	}
 }
@@ -95,24 +94,27 @@ void ARunnerCharacter::ReStartLevel()
 	UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()));
 }
 
+void ARunnerCharacter::MoveResultMap()
+{
+	UGameplayStatics::OpenLevel(GetWorld(), "Result");
+}
+
 void ARunnerCharacter::OnOverlapBegin(UPrimitiveComponent* _overlappedComponent,
 	AActor* _other_actor, UPrimitiveComponent* _other_component, int32 _otherBodyIndex,
 	bool _bFrom_sweep, const FHitResult& _sweep_result)
 {
-	if (_other_actor != nullptr)
-	{
+	if (_other_actor != nullptr) {
 		ASpikes* wallSpike = Cast<AWallSpikes>(_other_actor);
 		ASpikes* spike = Cast<ASpikes>(_other_actor);
 
-		if (wallSpike || spike)
-		{
+		if (wallSpike || spike) {
 			GetMesh()->Deactivate();
 			GetMesh()->SetVisibility(false);
 
 			mbcanMove = false;
 
 			FTimerHandle unusedHandle;
-			GetWorldTimerManager().SetTimer(unusedHandle, this, &ARunnerCharacter::ReStartLevel, 2.0f, false);
+			GetWorldTimerManager().SetTimer(unusedHandle, this, &ARunnerCharacter::MoveResultMap, 2.0f, false);
 		}
 	}
 }

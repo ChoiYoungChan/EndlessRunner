@@ -40,8 +40,7 @@ void ASpawnLevel::SpawnLevel(bool _isFirst)
 	mspawnLocation = FVector(0.0f, 1000.0f, 0.0f);
 	mspawnRotation = FRotator(0.0f, 90.0f, 0.0f);
 
-	if (!_isFirst)
-	{
+	if (!_isFirst) {
 		ABaseLevel* lastLevel = mlevelList.Last();
 		mspawnLocation = lastLevel->GetSpawnLocation()->GetComponentTransform().GetTranslation();
 	}
@@ -50,17 +49,14 @@ void ASpawnLevel::SpawnLevel(bool _isFirst)
 
 	newLevel = GetWorld()->SpawnActor<ABaseLevel>(mLevel[mrandomLevel - 1], mspawnLocation, mspawnRotation, mspawnInfo);
 
-	if (newLevel)
-	{
-		if (newLevel->GetTrigger())
-		{
+	if (newLevel) {
+		if (newLevel->GetTrigger()) {
 			newLevel->GetTrigger()->OnComponentBeginOverlap.AddDynamic(this, &ASpawnLevel::OnOverlapBegin);
 		}
 	}
 
 	mlevelList.Add(newLevel);
-	if (mlevelList.Num() > 5)
-	{
+	if (mlevelList.Num() > 5) {
 		mlevelList.RemoveAt(0);
 	}
 

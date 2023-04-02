@@ -24,17 +24,14 @@ void AEndlessRunnerGameMode::BeginPlay()
 
 void AEndlessRunnerGameMode::ChangeMenuWidget(TSubclassOf<UUserWidget> _NewWidgetClass)
 {
-	if (currentWidget != nullptr)
-	{
+	if (currentWidget != nullptr) {
 		currentWidget->RemoveFromViewport();
 		currentWidget = nullptr;
 	}
 
-	if (_NewWidgetClass != nullptr)
-	{
+	if (_NewWidgetClass != nullptr) {
 		currentWidget = CreateWidget(GetWorld(), _NewWidgetClass);
-		if (currentWidget != nullptr)
-		{
+		if (currentWidget != nullptr) {
 			currentWidget->AddToViewport();
 		}
 	}
